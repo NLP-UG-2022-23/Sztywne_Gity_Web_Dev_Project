@@ -86,6 +86,14 @@ nav a {
     font-size: 18px;
 }
 
+.search-btn:hover {background-color: #3e8e41}
+
+.search-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(0.44px);
+}
+
 @media screen and (max-width: 768px) {
     header img {
         width: 50px;
@@ -138,10 +146,6 @@ nav a {
     display: none;
 }
 
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
 .text {
     color: #f2f2f2;
     font-size: 15px;
@@ -160,7 +164,7 @@ nav a {
     top: 0;
 }
 
-.dot {
+/* .dot {
     cursor: pointer;
     height: 15px;
     width: 15px;
@@ -173,7 +177,7 @@ nav a {
 
 .active, .dot:hover {
     background-color: #717171;
-}
+} */
 
 .fade {
     animation-name: fade;
