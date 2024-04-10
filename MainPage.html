@@ -16,6 +16,16 @@
         <a href="#">Strona Główna</a>
         <a href="#">O nas</a>
         <a href="#">Kontakt</a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Kategorie</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Koncerty</a>
+                <a href="#">Teatr</a>
+                <a href="#">Sport</a>
+                <a href="#">Dla dzieci</a>
+                <a href="#">Widowiska</a>
+            </div>
+        </div>
     </nav>
 
     <main>
@@ -32,8 +42,12 @@
             <div class="advertisement-box">Advertisement 1</div>
             <div class="advertisement-box">Advertisement 2</div>
         </div>
+
+        <div id="categoriesList"></div>
     </main>
 
+    <script src="categories.js"></script>
+    <script src="api.js"></script>
     <footer>
         &copy; 2024 Sztywne wyszukiwanie. Wszystkie prawa zastrzeżone
     </footer>
