@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="pl">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
-    <title>Sztywna Wyszukiwarka</title>
+    <title>Stone Wall Searcher</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css">
     <script src="search.js" defer></script>
-  </head>
-  </head>
+</head>
 <body>
     <header class="container">
-      <div class="content">
-        <h1><img src="logo.png">Sztywna Wyszukiwarka</h1>
+        <div class="content">
+            <h1><img src="logo.png">Stone Wall Searcher</h1>
         </div>
         <div class="slideshow-container">
             <div class="mySlides fade">
@@ -38,20 +37,25 @@
     </header>
 
     <nav>
-        <a href="#">Strona Główna</a>
-        <a href="#">O nas</a>
-        <a href="#">Kontakt</a>
+        <a href="#">Homepage</a>
+        <a href="#">About us</a>
+        <a href="#">Contact</a>
     </nav>
 
     <div id="searchbar"> 
         <div class="search-container">
-            <input type="text" id="eventInput" class="search-input" placeholder="Wydarzenie">
-            <input type="text" id="locationInput" class="search-input" placeholder="Lokalizacja">
+            <input type="text" id="eventInput" class="search-input" placeholder="Event">
+            <input type="text" id="locationInput" class="search-input" placeholder="Location">
             <input type="date" id="dateInput" class="search-input">
-            <button id="searchBtn" class="search-btn">&#128269; Szukaj</button>
+            <button id="searchBtn" class="search-btn">&#128269; Search</button>
         </div>
     </div>
+    
+    <div class="button-container">
+        <button id="previous_button" class="button" onclick="changePage(-1)">Previous</button>
+        <button id="next_button" class="button" onclick="changePage(1)">Next</button>
+    </div>
+    
+    <div id="results" class="results-container"></div>
 </body>
 </html>
-
-
