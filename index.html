@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Stone Wall Searcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="search.js" defer></script>
+</head>
+<body>
+    <header class="container">
+        <div class="content">
+            <h1><img src="logo.png">Stone Wall Searcher</h1>
+        </div>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="concert.jpg" style="width:100%">
+                <div class="concert"></div>
+            </div>
+            <div class="mySlides fade">
+                <img src="museum.jpg" style="width:100%">
+                <div class="museum"></div>
+            </div>
+            <div class="mySlides fade">
+                <img src="match.jpg" style="width:100%">
+                <div class="match"></div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#">Homepage</a>
+        <a href="#">About us</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div id="searchbar"> 
+        <div class="search-container">
+            <input type="text" id="eventInput" class="search-input" placeholder="Event">
+            <input type="text" id="locationInput" class="search-input" placeholder="Location">
+            <input type="date" id="dateInput" class="search-input">
+            <button id="searchBtn" class="search-btn">&#128269; Search</button>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button id="previous_button" class="button" onclick="changePage(-1)">Previous</button>
+        <button id="next_button" class="button" onclick="changePage(1)">Next</button>
+    </div>
+    
+    <div id="results" class="results-container"></div>
+</body>
+</html>
