@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sztywna Wyszukiwarka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles1.css">
+    <script src="search.js" defer></script>
+  </head>
+  <body>
+    <header class="container">
+      <div class="content">
+        <h1><img src="logo.png">Sztywna Wyszukiwarka</h1>
+        </div>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="concert.jpg" style="width:100%">
+                <div class="concert"></div>
+            </div>
+            <div class="mySlides fade">
+                <img src="museum.jpg" style="width:100%">
+                <div class="museum"></div>
+            </div>
+            <div class="mySlides fade">
+                <img src="match.jpg" style="width:100%">
+                <div class="match"></div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </header>
+
+    <nav>
+      <a href="search.html">Strona Główna</a>
+      <a href="about.html">O nas</a>
+      <a href="contact.html">Kontakt</a>
+      <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Kategorie</button>
+          <div id="myDropdown" class="dropdown-content">
+              <a href="#">Koncerty</a>
+              <a href="#">Teatr</a>
+              <a href="#">Sport</a>
+              <a href="#">Dla dzieci</a>
+              <a href="#">Widowiska</a>
+          </div>
+      </div>
+  </nav>
+
+    <div class="column">
+      <div class="person">
+        <img src="sigma1.jpg" alt="Sigma 1">
+        <div class="description">
+          <h2>Kacper</h2>
+          <p>Opis</p>
+        </div>
+      </div>
+      
+      <div class="person">
+        <img src="sigma2.jpg" alt="Sigma 2">
+        <div class="description">
+          <h2>Mateusz</h2>
+          <p>Opis</p>
+        </div>
+      </div>
+
+      <div class="person">
+        <img src="sigma3.jpg" alt="Sigma 3">
+        <div class="description">
+          <h2>Nadia</h2>
+          <p>Opis</p>
+        </div>
+      </div>
+
+      <div class="person">
+        <img src="sigma4.jpg" alt="Sigma 4">
+        <div class="description">
+          <h2>Paula</h2>
+          <p>Opis</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2024 Sztywna Wyszukiwarka. Wszystkie prawa zastrzeżone
+    </footer>
+  </body>
+</html>
