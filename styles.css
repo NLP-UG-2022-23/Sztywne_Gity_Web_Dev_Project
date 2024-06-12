@@ -337,7 +337,48 @@ nav a {
     text-decoration: underline;
 }
 
-.emoji {
-    font-size: 50px;
-    margin-right: 20px;
+.nav-button {
+    display: none;
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.nav-button.visible {
+    display: inline-block;
+}
+
+.result {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.result-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.result-content .emoji {
+    font-size: 24px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.weather-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.weather-icon {
+    width: 30px;
+    height: 30px;
+    display: none;
+    margin-right: 10px;
 }
