@@ -70,18 +70,25 @@ async function displayResults(events) {
         return;
     }
 
-    for (const event of events) {
+for (const event of events) {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'result';
         const eventTypeEmoji = event.type === 'concert' ? '🎵' : event.type === 'sports' ? '⚽' : '🎭';
         eventDiv.innerHTML = `
-             <div class="result-content">
-                <h2><span class="emoji">${eventTypeEmoji}</span> ${event.title}</h2>
-                <p>Date: ${event.datetime_local}</p>
-                <p>Venue: ${event.venue.name}</p>
-                <span class="show-more">Show more</span>
-                <div class="details">
-                    <p>Event URL: <a href="${event.url}" target="_blank">${event.url}</a></p>
+            <div class="result-content">
+                <span class="emoji">${eventTypeEmoji}</span>
+                <div>
+                    <h2>${event.title}</h2>
+                    <p>Date: ${event.datetime_local}</p>
+                    <p>Venue: ${event.venue.name}</p>
+                    <div class="weather-container">
+                        <img id="icon-${event.id}" class="weather-icon" />
+                        <div id="weather-${event.id}" class="weather-info"></div>
+                    </div>
+                    <span class="show-more">Show more</span>
+                    <div class="details">
+                        <p>Event URL: <a href="${event.url}" target="_blank">${event.url}</a></p>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -99,15 +106,14 @@ async function displayResults(events) {
         const location = `${event.venue.city}, ${event.venue.state}`;
         try {
             const weather = await getWeather(location, eventDate);
-            const weatherElement = document.getElementById(`weather-${event.id}`);
-            const weatherInfo = weatherElement.querySelector('.weather-info');
-            weatherInfo.innerText = `Average Temp: ${weather.avgtemp_c}°C, Condition: ${weather.condition}`;
-            const weatherIcon = weatherElement.querySelector('.weather-icon');
+            const weatherElement = eventDiv.querySelector(`#weather-${event.id}`);
+            weatherElement.innerText = `Average Temp: ${weather.avgtemp_c}°C, Condition: ${weather.condition}`;
+            const weatherIcon = eventDiv.querySelector(`#icon-${event.id}`);
             weatherIcon.src = getWeatherIcon(weather.condition);
             weatherIcon.style.display = 'block';
         } catch (error) {
             console.error('Error fetching weather:', error);
-            document.getElementById(`weather-${event.id}`).innerText = 'Weather information not available';
+            eventDiv.querySelector(`#weather-${event.id}`).innerText = 'Weather information not available';
         }
     }
 }
