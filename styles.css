@@ -109,7 +109,13 @@ nav a {
     margin: 10px;
     width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
+
+.result:hover {
+    transform: scale(1.05); /* Hover effect */
+}
+
 
 .result h2 {
     margin: 0 0 10px;
@@ -270,4 +276,9 @@ nav a {
     cursor: pointer;
     color: blue;
     text-decoration: underline;
+}
+
+.emoji {
+    font-size: 50px;
+    margin-right: 20px;
 }
