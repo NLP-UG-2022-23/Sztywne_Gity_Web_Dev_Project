@@ -1,4 +1,7 @@
 const CLIENT_ID = 'NDE4Nzc3NTJ8MTcxNjk5MDcyMC4zNDg1MDM0';
+const WEATHER_API_KEY = '18588372be3342ea959135809240506';
+const WEATHER_API_URL = 'https://api.weatherapi.com/v1/forecast.json';
+
 let currentPage = 1;
 const next_button = document.getElementById("next_button");
 const previous_button = document.getElementById("previous_button");
@@ -47,22 +50,39 @@ async function fetchEvents() {
     }
 }
 
-function displayResults(events) {
+async function getWeather(location, date) {
+    const url = `${WEATHER_API_URL}?key=${WEATHER_API_KEY}&q=${location}&dt=${date}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    const forecast = data.forecast.forecastday[0].day;
+    return {
+        avgtemp_c: forecast.avgtemp_c,
+        condition: forecast.condition.text
+    };
+}
+async function displayResults(events) {
     const resultsContainer = document.getElementById('results');
     if (events.length === 0) {
         resultsContainer.innerHTML = '<p>No events found. Please try a different search.</p>';
         return;
     }
 
-    events.forEach(event => {
+    for (const event of events) {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'result';
         eventDiv.innerHTML = `
             <h2>${event.title}</h2>
             <p>Date: ${event.datetime_local}</p>
             <p>Venue: ${event.venue.name}</p>
+            <div class="weather" id="weather-${event.id}">
+                <span class="weather-info">Fetching weather...</span>
+                <img class="weather-icon" src="" alt="Weather Icon" style="display:none;">
+            </div>
             <span class="show-more">Show more</span>
-            <div class="details">
+            <div class="details" style="display:none;">
                 <p>Event URL: <a href="${event.url}" target="_blank">${event.url}</a></p>
             </div>
             <hr>
@@ -75,7 +95,22 @@ function displayResults(events) {
             details.style.display = details.style.display === 'none' ? 'block' : 'none';
             showMore.textContent = details.style.display === 'none' ? 'Show more' : 'Show less';
         });
-    });
+
+        const eventDate = event.datetime_local.split('T')[0];
+        const location = `${event.venue.city}, ${event.venue.state}`;
+        try {
+            const weather = await getWeather(location, eventDate);
+            const weatherElement = document.getElementById(`weather-${event.id}`);
+            const weatherInfo = weatherElement.querySelector('.weather-info');
+            weatherInfo.innerText = `Average Temp: ${weather.avgtemp_c}°C, Condition: ${weather.condition}`;
+            const weatherIcon = weatherElement.querySelector('.weather-icon');
+            weatherIcon.src = getWeatherIcon(weather.condition);
+            weatherIcon.style.display = 'block';
+        } catch (error) {
+            console.error('Error fetching weather:', error);
+            document.getElementById(`weather-${event.id}`).innerText = 'Weather information not available';
+        }
+    }
 }
 
 function changePage(direction) {
@@ -99,4 +134,21 @@ function showSlides() {
     }
     slides[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+
+function getWeatherIcon(condition) {
+    const conditionLower = condition.toLowerCase();
+    if (conditionLower.includes('sunny')) {
+        return 'sunny.png';
+    } else if (conditionLower.includes('cloudy')) {
+        return 'cloudy.png';
+    } else if (conditionLower.includes('rain')) {
+        return 'rain.png';
+    } else if (conditionLower.includes('snow')) {
+        return 'snow.png';
+    } else if (conditionLower.includes('storm')) {
+        return 'storm.png';
+    } else {
+        return 'icons/default.png'; // A default icon for unspecified weather conditions
+    }
 }
