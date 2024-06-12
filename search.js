@@ -73,6 +73,8 @@ async function displayResults(events) {
     for (const event of events) {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'result';
+        const eventTypeEmoji = event.type === 'concert' ? '🎵' : event.type === 'sports' ? '⚽' : '🎭';
+        
         eventDiv.innerHTML = `
              <div class="result-content">
                 <h2><span class="emoji">${eventTypeEmoji}</span> ${event.title}</h2>
