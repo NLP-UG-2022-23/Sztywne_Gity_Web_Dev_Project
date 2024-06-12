@@ -74,16 +74,14 @@ async function displayResults(events) {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'result';
         eventDiv.innerHTML = `
-            <h2>${event.title}</h2>
-            <p>Date: ${event.datetime_local}</p>
-            <p>Venue: ${event.venue.name}</p>
-            <div class="weather" id="weather-${event.id}">
-                <span class="weather-info">Fetching weather...</span>
-                <img class="weather-icon" src="" alt="Weather Icon" style="display:none;">
-            </div>
-            <span class="show-more">Show more</span>
-            <div class="details" style="display:none;">
-                <p>Event URL: <a href="${event.url}" target="_blank">${event.url}</a></p>
+             <div class="result-content">
+                <h2><span class="emoji">${eventTypeEmoji}</span> ${event.title}</h2>
+                <p>Date: ${event.datetime_local}</p>
+                <p>Venue: ${event.venue.name}</p>
+                <span class="show-more">Show more</span>
+                <div class="details">
+                    <p>Event URL: <a href="${event.url}" target="_blank">${event.url}</a></p>
+                </div>
             </div>
             <hr>
         `;
